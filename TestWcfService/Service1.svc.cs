@@ -36,6 +36,12 @@ namespace TestWcfService
             list.Add(new Student() { StudentID = 1, Lastname = "Dudan", Firstname = "Valiant", MI = "A" });
             return list;
         }
+
+
+        public Student GetOneStudent(int id)
+        {
+            return GetAllStudent().Where(c => c.StudentID == 1).FirstOrDefault();
+        }
     }
 
     public class Student

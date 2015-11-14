@@ -16,6 +16,9 @@ namespace TestWcfService
         List<Student> GetAllStudent();
 
         [OperationContract]
+        Student GetOneStudent(int id);
+
+        [OperationContract]
         string GetData(int value);
 
         [OperationContract]
