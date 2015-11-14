@@ -12,6 +12,8 @@ namespace TestWcfService
     [ServiceContract]
     public interface IService1
     {
+        [OperationContract]
+        List<Student> GetAllStudent();
 
         [OperationContract]
         string GetData(int value);

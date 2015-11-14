@@ -29,5 +29,20 @@ namespace TestWcfService
             }
             return composite;
         }
+
+        public List<Student> GetAllStudent()
+        {
+            List<Student> list = new List<Student>();
+            list.Add(new Student() { StudentID = 1, Lastname = "Dudan", Firstname = "Valiant", MI = "A" });
+            return list;
+        }
+    }
+
+    public class Student
+    {
+        public int StudentID { get; set; }
+        public string Lastname { get; set; }
+        public string Firstname { get; set; }
+        public string MI { get; set; }
     }
 }
