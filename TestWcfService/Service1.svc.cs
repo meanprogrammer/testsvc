@@ -33,22 +33,73 @@ namespace TestWcfService
         public List<Student> GetAllStudent()
         {
             List<Student> list = new List<Student>();
-            list.Add(new Student() { StudentID = 1, Lastname = "Dudan", Firstname = "Valiant", MI = "A" });
+            using (db5ba730478f594a8c890aa55700666a55Entities context = new db5ba730478f594a8c890aa55700666a55Entities())
+            {
+                list = context.Students.ToList();
+            }
             return list;
         }
 
 
         public Student GetOneStudent(int id)
         {
-            return GetAllStudent().Where(c => c.StudentID == 1).FirstOrDefault();
+            Student s = null;
+            using (db5ba730478f594a8c890aa55700666a55Entities context = new db5ba730478f594a8c890aa55700666a55Entities())
+            {
+                s = context.Students.Where(c => c.StudentID == id).FirstOrDefault();
+            }
+            return s;
+        }
+
+        public bool UpdateStudent(Student student, int Id)
+        {
+            int result = 0;
+            using (db5ba730478f594a8c890aa55700666a55Entities context = new db5ba730478f594a8c890aa55700666a55Entities())
+            {
+                Student s = GetOneStudent(Id);
+                if (s != null)
+                {
+                    context.Entry(s).CurrentValues.SetValues(student);
+                    result = context.SaveChanges();
+                }
+            }
+            return result > 0;
+        }
+
+        public bool CreateStudent(Student student)
+        {
+            int result = 0;
+
+            using (db5ba730478f594a8c890aa55700666a55Entities context = new db5ba730478f594a8c890aa55700666a55Entities())
+            {
+                context.Students.Add(student);
+                result = context.SaveChanges();
+            }
+            return result > 0;
+        }
+
+        public bool DeleteStudent(int id)
+        {
+            int result = 0;
+            using (db5ba730478f594a8c890aa55700666a55Entities context = new db5ba730478f594a8c890aa55700666a55Entities())
+            {
+                Student s = GetOneStudent(id);
+                if (s != null)
+                {
+                    context.Students.Remove(s);
+                    result = context.SaveChanges();
+                }
+            }
+            return result > 0;
         }
     }
 
+    /*
     public class Student
     {
         public int StudentID { get; set; }
         public string Lastname { get; set; }
         public string Firstname { get; set; }
         public string MI { get; set; }
-    }
+    }*/
 }
