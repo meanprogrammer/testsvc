@@ -19,6 +19,15 @@ namespace TestWcfService
         Student GetOneStudent(int id);
 
         [OperationContract]
+        bool UpdateStudent(Student student, int Id);
+
+        [OperationContract]
+        bool CreateStudent(Student student);
+
+        [OperationContract]
+        bool DeleteStudent(int id);
+
+        [OperationContract]
         string GetData(int value);
 
         [OperationContract]
