@@ -51,22 +51,22 @@ namespace TestWcfService
             return s;
         }
 
-        public bool UpdateStudent(Student student, int Id)
+        public void UpdateStudent(Student student)
         {
             int result = 0;
             using (db5ba730478f594a8c890aa55700666a55Entities context = new db5ba730478f594a8c890aa55700666a55Entities())
             {
-                Student s = GetOneStudent(Id);
+                Student s = GetOneStudent(student.StudentID);
                 if (s != null)
                 {
                     context.Entry(s).CurrentValues.SetValues(student);
                     result = context.SaveChanges();
                 }
             }
-            return result > 0;
+            //return result > 0;
         }
 
-        public bool CreateStudent(Student student)
+        public void CreateStudent(Student student)
         {
             int result = 0;
 
@@ -75,10 +75,10 @@ namespace TestWcfService
                 context.Students.Add(student);
                 result = context.SaveChanges();
             }
-            return result > 0;
+            //return result > 0;
         }
 
-        public bool DeleteStudent(int id)
+        public void DeleteStudent(int id)
         {
             int result = 0;
             using (db5ba730478f594a8c890aa55700666a55Entities context = new db5ba730478f594a8c890aa55700666a55Entities())
@@ -90,7 +90,7 @@ namespace TestWcfService
                     result = context.SaveChanges();
                 }
             }
-            return result > 0;
+            //return result > 0;
         }
     }
 
