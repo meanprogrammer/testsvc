@@ -94,12 +94,5 @@ namespace TestWcfService
         }
     }
 
-    /*
-    public class Student
-    {
-        public int StudentID { get; set; }
-        public string Lastname { get; set; }
-        public string Firstname { get; set; }
-        public string MI { get; set; }
-    }*/
+
 }

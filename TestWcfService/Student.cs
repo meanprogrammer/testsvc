@@ -11,12 +11,18 @@ namespace TestWcfService
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Runtime.Serialization;
+
+    [DataContract]
     public partial class Student
     {
+        [DataMember]
         public int StudentID { get; set; }
+        [DataMember]
         public string Lastname { get; set; }
+        [DataMember]
         public string Firstname { get; set; }
+        [DataMember]
         public string MI { get; set; }
     }
 }
