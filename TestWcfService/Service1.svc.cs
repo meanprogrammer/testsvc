@@ -76,7 +76,7 @@ namespace TestWcfService
                             where s.StudentID == student.StudentID
                             select s).FirstOrDefault();
 
-                stud.Lastname = "Updated Student1";
+                stud.Lastname = student.Lastname;
 
                 int num = ctx.SaveChanges();
             }
