@@ -60,9 +60,10 @@ namespace TestWcfService
                 Student s = GetOneStudent(student.StudentID);
                 if (s != null)
                 {
-                    context.Students.Attach(s);
-                    context.Entry(s).State = EntityState.Modified;
-                    result = context.SaveChanges();
+                    s.Lastname = student.Lastname;
+                    s.Firstname = student.Firstname;
+                    s.MI = student.MI;
+                    context.SaveChanges();
                 }
             }
             //return result > 0;
