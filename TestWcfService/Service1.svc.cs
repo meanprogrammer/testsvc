@@ -54,6 +54,7 @@ namespace TestWcfService
 
         public void UpdateStudent(Student student)
         {
+            /*
             int result = 0;
             using (db5ba730478f594a8c890aa55700666a55Entities context = new db5ba730478f594a8c890aa55700666a55Entities())
             {
@@ -66,8 +67,19 @@ namespace TestWcfService
                     context.Students.Add(student);
                     context.SaveChanges();
                 }
-            }
+            }*/
             //return result > 0;
+
+            using (var ctx = new db5ba730478f594a8c890aa55700666a55Entities())
+            {
+                var stud = (from s in ctx.Students
+                            where s.StudentID == student.StudentID
+                            select s).FirstOrDefault();
+
+                stud.Lastname = "Updated Student1";
+
+                int num = ctx.SaveChanges();
+            }
         }
 
         public void CreateStudent(Student student)
