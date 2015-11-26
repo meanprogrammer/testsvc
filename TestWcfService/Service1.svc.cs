@@ -77,7 +77,8 @@ namespace TestWcfService
                             select s).FirstOrDefault();
 
                 stud.Lastname = student.Lastname;
-
+                stud.Firstname = student.Firstname;
+                stud.MI = student.MI;
                 int num = ctx.SaveChanges();
             }
         }
