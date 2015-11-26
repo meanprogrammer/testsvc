@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -59,7 +60,8 @@ namespace TestWcfService
                 Student s = GetOneStudent(student.StudentID);
                 if (s != null)
                 {
-                    context.Entry(s).CurrentValues.SetValues(student);
+                    context.Students.Attach(s);
+                    context.Entry(s).State = EntityState.Modified;
                     result = context.SaveChanges();
                 }
             }
