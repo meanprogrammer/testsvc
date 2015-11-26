@@ -63,7 +63,7 @@ namespace TestWcfService
                     s.Lastname = student.Lastname;
                     s.Firstname = student.Firstname;
                     s.MI = student.MI;
-                    context.Students.Add(s);
+                    context.Students.Add(student);
                     context.SaveChanges();
                 }
             }
